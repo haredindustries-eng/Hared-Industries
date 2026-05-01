@@ -19,12 +19,14 @@ color:#fff;
 nav{
 display:flex;
 justify-content:space-between;
-padding:20px 50px;
+align-items:center;
+padding:20px 60px;
 border-bottom:1px solid gold;
 }
 
-nav h1{color:gold;}
+nav h1{color:gold;letter-spacing:2px;}
 nav a{color:white;margin-left:20px;text-decoration:none;}
+nav a:hover{color:gold;}
 
 /* HERO */
 .hero{
@@ -34,19 +36,21 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-background:linear-gradient(to bottom, rgba(0,0,0,0.7), black),
+background:linear-gradient(rgba(0,0,0,0.7),black),
 url('https://images.unsplash.com/photo-1523381210434-271e8be1f52b');
 background-size:cover;
+background-position:center;
 }
 
 .hero h2{
-font-size:45px;
+font-size:50px;
 color:gold;
 }
 
 .hero p{
-max-width:600px;
-margin:20px 0;
+max-width:700px;
+margin:20px;
+opacity:0.9;
 }
 
 .btn{
@@ -57,11 +61,14 @@ margin:10px;
 text-decoration:none;
 border-radius:5px;
 font-weight:bold;
+transition:0.3s;
 }
+
+.btn:hover{transform:scale(1.05);}
 
 /* SECTION */
 .section{
-padding:80px 50px;
+padding:80px 60px;
 text-align:center;
 }
 
@@ -71,53 +78,26 @@ margin-bottom:20px;
 }
 
 /* PRODUCTS */
-<!-- PRODUCTS -->
-<section class="section">
-<h2>Our Products</h2>
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
 
-<div class="products">
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab" style="width:100%;height:180px;object-fit:cover;border-radius:5px;">
-<p>T-Shirts</p>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1506629082955-511b1aa562c8" style="width:100%;height:180px;object-fit:cover;border-radius:5px;">
-<p>Shorts</p>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1514996937319-344454492b37" style="width:100%;height:180px;object-fit:cover;border-radius:5px;">
-<p>Sportswear</p>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf" style="width:100%;height:180px;object-fit:cover;border-radius:5px;">
-<p>Tactical Gear</p>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1520975928316-0563f4c5e2c3" style="width:100%;height:180px;object-fit:cover;border-radius:5px;">
-<p>Fabric Quality</p>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1586864387967-d02ef85d93e8" style="width:100%;height:180px;object-fit:cover;border-radius:5px;">
-<p>Packaging</p>
-</div>
-
-</div>
-</section>
 .card{
 background:#111;
-padding:20px;
 border:1px solid gold;
+padding:15px;
 transition:0.3s;
 }
 
-.card:hover{
-transform:scale(1.05);
+.card:hover{transform:translateY(-8px);}
+
+.card img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:5px;
 }
 
 /* PROCESS */
@@ -125,26 +105,36 @@ transform:scale(1.05);
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
-gap:20px;
+gap:15px;
 }
 
 .step{
 border:1px solid gold;
-padding:20px;
-width:200px;
+padding:15px;
+width:180px;
+background:#111;
+}
+
+/* CTA */
+.cta{
+padding:60px;
+text-align:center;
+background:#111;
+border-top:1px solid gold;
+border-bottom:1px solid gold;
 }
 
 /* FOOTER */
 footer{
-padding:30px;
 text-align:center;
-border-top:1px solid gold;
+padding:30px;
+opacity:0.7;
 }
 
 /* RESPONSIVE */
 @media(max-width:768px){
 .hero h2{font-size:30px;}
-nav{flex-direction:column;align-items:center;}
+nav{flex-direction:column;}
 }
 </style>
 </head>
@@ -164,16 +154,18 @@ nav{flex-direction:column;align-items:center;}
 <section class="hero">
 <h2>Premium Custom Apparel Manufacturer</h2>
 <p>High-quality T-Shirts, Shorts, Sportswear & Tactical Gear for Global Brands</p>
-<div>
+
 <a class="btn" href="https://wa.me/923107983760">WhatsApp Now</a>
-<a class="btn" href="mailto:haredindustries@gmail.com">Get a Quote</a>
-</div>
+<a class="btn" href="mailto:haredindustries@gmail.com">Get Quote</a>
 </section>
 
 <!-- ABOUT -->
 <section class="section">
 <h2>About Us</h2>
-<p>Hared Industries is a Pakistan-based apparel manufacturer specializing in high-quality custom garments. We help brands worldwide turn ideas into premium products with precision, durability, and professional finishing.</p>
+<p>
+Hared Industries is a Pakistan-based apparel manufacturer specializing in premium custom clothing.
+We serve global clients with high-quality T-shirts, shorts, sportswear, tactical gear and packaging solutions.
+</p>
 </section>
 
 <!-- PRODUCTS -->
@@ -181,13 +173,38 @@ nav{flex-direction:column;align-items:center;}
 <h2>Our Products</h2>
 
 <div class="products">
-<div class="card">T-Shirts</div>
-<div class="card">Shorts</div>
-<div class="card">Sportswear</div>
-<div class="card">Tactical Gear</div>
-<div class="card">Custom Manufacturing</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab">
+<p>T-Shirts</p>
 </div>
 
+<div class="card">
+<img src="https://images.unsplash.com/photo-1506629082955-511b1aa562c8">
+<p>Shorts</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1514996937319-344454492b37">
+<p>Sportswear</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf">
+<p>Tactical Gear</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1520975928316-0563f4c5e2c3">
+<p>Fabric Quality</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1586864387967-d02ef85d93e8">
+<p>Packaging</p>
+</div>
+
+</div>
 </section>
 
 <!-- PROCESS -->
@@ -201,23 +218,10 @@ nav{flex-direction:column;align-items:center;}
 <div class="step">Quality Check</div>
 <div class="step">Delivery</div>
 </div>
-
-</section>
-
-<!-- WHY US -->
-<section class="section">
-<h2>Why Choose Us</h2>
-<p>
-✔ Premium Quality<br>
-✔ Custom Designs<br>
-✔ Worldwide Shipping<br>
-✔ Reliable Manufacturing<br>
-✔ Fast Turnaround
-</p>
 </section>
 
 <!-- CTA -->
-<section class="section">
+<section class="cta">
 <h2>Ready to Start Your Order?</h2>
 <a class="btn" href="https://wa.me/923107983760">Chat on WhatsApp</a>
 </section>
@@ -234,11 +238,10 @@ nav{flex-direction:column;align-items:center;}
 <a class="btn" href="https://www.linkedin.com/in/hared-industries-2775a0253/">LinkedIn</a>
 <a class="btn" href="https://www.instagram.com/hared_industries">Instagram</a>
 <a class="btn" href="https://www.facebook.com/share/1EebXGu3qj/">Facebook</a>
-
 </section>
 
 <footer>
-<p>© 2026 Hared Industries — All Rights Reserved</p>
+© 2026 Hared Industries — All Rights Reserved
 </footer>
 
 </body>
