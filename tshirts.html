@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T-Shirts | Hared Industries</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white: #fafaf8;
+  --black: #0d0d0d;
+  --gray: #6b6b6b;
+  --light: #efefec;
+  --border: #d8d8d4;
+  --accent: #c9a96e;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 60px;
+  background: rgba(250,250,248,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--black);
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 36px; align-items: center; }
+.nav-links a {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gray);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--black); }
+.nav-back {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s;
+}
+.nav-back:hover { color: var(--black); }
+
+/* HERO */
+.page-hero {
+  margin-top: 80px;
+  padding: 80px 60px 60px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.page-hero-left {}
+.page-eyebrow {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.page-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(48px, 6vw, 80px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -1px;
+}
+.page-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+.page-desc {
+  font-size: 12px;
+  letter-spacing: 1px;
+  line-height: 2;
+  color: var(--gray);
+  max-width: 320px;
+  text-align: right;
+}
+
+/* GALLERY */
+.gallery-section {
+  padding: 60px 60px 100px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  background: var(--light);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(15%);
+  transition: transform 0.7s ease, filter 0.5s;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.06);
+  filter: grayscale(0%);
+}
+
+.gallery-item-info {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 28px 24px 24px;
+  background: linear-gradient(transparent, rgba(13,13,13,0.75));
+  transform: translateY(8px);
+  transition: transform 0.4s;
+}
+
+.gallery-item:hover .gallery-item-info {
+  transform: translateY(0);
+}
+
+.gallery-item-name {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.gallery-item-sub {
+  font-size: 10px;
+  color: rgba(255,255,255,0.6);
+  margin-top: 4px;
+  letter-spacing: 1px;
+}
+
+/* CTA */
+.cta-section {
+  padding: 80px 60px;
+  background: var(--black);
+  text-align: center;
+}
+
+.cta-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.cta-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: 40px;
+}
+
+.cta-title em { font-style: italic; }
+
+.cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 14px 36px;
+  background: var(--white);
+  color: var(--black);
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.2s;
+}
+.btn-primary:hover { background: var(--accent); color: var(--white); }
+
+.btn-outline {
+  display: inline-block;
+  padding: 14px 36px;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: var(--white);
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.05); }
+
+/* FOOTER */
+footer {
+  background: var(--black);
+  color: rgba(255,255,255,0.4);
+  padding: 40px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+}
+.footer-copy { font-size: 10px; letter-spacing: 1px; }
+
+/* REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media(max-width: 900px) {
+  nav { padding: 20px 24px; }
+  .nav-links { display: none; }
+  .page-hero { padding: 100px 28px 40px; flex-direction: column; gap: 20px; }
+  .page-desc { text-align: left; }
+  .gallery-section { padding: 40px 16px 60px; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .cta-section { padding: 60px 28px; }
+  .cta-title { font-size: 36px; }
+  footer { flex-direction: column; gap: 16px; text-align: center; padding: 30px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">Hared Industries</a>
+  <div class="nav-links">
+    <a href="index.html#about">About</a>
+    <a href="index.html#products">Products</a>
+    <a href="index.html#process">Process</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+  <a class="nav-back" href="index.html">← Back</a>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-left">
+    <p class="page-eyebrow">Collections · Custom Apparel</p>
+    <h1 class="page-title">Premium<br><em>T-Shirts</em></h1>
+  </div>
+  <p class="page-desc">Custom-made T-shirts crafted for global brands. Available in all sizes, fabrics, and print techniques.</p>
+</div>
+
+<!-- GALLERY -->
+<section class="gallery-section">
+  <div class="gallery-grid">
+
+    <div class="gallery-item reveal">
+      <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600" alt="T-Shirt 1">
+      <div class="gallery-item-info">
+        <p class="gallery-item-name">Classic Crew Neck</p>
+        <p class="gallery-item-sub">100% Cotton</p>
+      </div>
+    </div>
+
+    <div class="gallery-item reveal">
+      <img src="https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=600" alt="T-Shirt 2">
+      <div class="gallery-item-info">
+        <p class="gallery-item-name">Premium Oversized</p>
+        <p class="gallery-item-sub">Heavy GSM Fabric</p>
+      </div>
+    </div>
+
+    <div class="gallery-item reveal">
+      <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600" alt="T-Shirt 3">
+      <div class="gallery-item-info">
+        <p class="gallery-item-name">Polo T-Shirt</p>
+        <p class="gallery-item-sub">Pique Fabric</p>
+      </div>
+    </div>
+
+    <div class="gallery-item reveal">
+      <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600" alt="T-Shirt 4">
+      <div class="gallery-item-info">
+        <p class="gallery-item-name">Graphic Print</p>
+        <p class="gallery-item-sub">DTG & Screen Print</p>
+      </div>
+    </div>
+
+    <div class="gallery-item reveal">
+      <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=600" alt="T-Shirt 5">
+      <div class="gallery-item-info">
+        <p class="gallery-item-name">V-Neck Essential</p>
+        <p class="gallery-item-sub">Soft Combed Cotton</p>
+      </div>
+    </div>
+
+    <div class="gallery-item reveal">
+      <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600" alt="T-Shirt 6">
+      <div class="gallery-item-info">
+        <p class="gallery-item-name">Long Sleeve</p>
+        <p class="gallery-item-sub">Custom Embroidery</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <p class="cta-label">Ready to Order?</p>
+  <h2 class="cta-title">Let's Create Your<br><em>Custom T-Shirts</em></h2>
+  <div class="cta-buttons">
+    <a class="btn-primary" href="https://wa.me/923107983760">WhatsApp Us</a>
+    <a class="btn-outline" href="mailto:haredindustries@gmail.com">Get Quote</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Hared Industries</div>
+  <div class="footer-copy">© 2026 Hared Industries — All Rights Reserved</div>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
