@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products | Hared Industries</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white: #fafaf8;
+  --black: #0d0d0d;
+  --gray: #6b6b6b;
+  --light: #efefec;
+  --border: #d8d8d4;
+  --accent: #c9a96e;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 60px;
+  background: rgba(250,250,248,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--black);
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 36px; }
+.nav-links a {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gray);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--black); }
+
+/* PAGE HERO */
+.page-hero {
+  margin-top: 80px;
+  padding: 80px 60px 60px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.page-eyebrow {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.page-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(48px, 6vw, 80px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -1px;
+}
+.page-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+.page-desc {
+  font-size: 12px;
+  letter-spacing: 1px;
+  line-height: 2;
+  color: var(--gray);
+  max-width: 320px;
+  text-align: right;
+}
+
+/* FILTER TABS */
+.filter-bar {
+  padding: 30px 60px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  padding: 8px 24px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--gray);
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'Montserrat', sans-serif;
+}
+.filter-btn:hover { border-color: var(--black); color: var(--black); }
+.filter-btn.active { background: var(--black); color: var(--white); border-color: var(--black); }
+
+/* COLLECTION SECTION */
+.collection {
+  padding: 80px 60px;
+  border-bottom: 1px solid var(--border);
+}
+
+.collection-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 50px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.collection-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 300;
+  line-height: 1.1;
+}
+.collection-title em { font-style: italic; color: var(--accent); }
+
+.collection-desc {
+  font-size: 11px;
+  letter-spacing: 1px;
+  line-height: 2;
+  color: var(--gray);
+  max-width: 280px;
+  text-align: right;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.product-card {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  background: var(--light);
+}
+
+.product-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(15%);
+  transition: transform 0.7s ease, filter 0.5s;
+}
+
+.product-card:hover img {
+  transform: scale(1.06);
+  filter: grayscale(0%);
+}
+
+.product-info {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 28px 24px 24px;
+  background: linear-gradient(transparent, rgba(13,13,13,0.75));
+  transform: translateY(8px);
+  transition: transform 0.4s;
+}
+
+.product-card:hover .product-info { transform: translateY(0); }
+
+.product-name {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.product-sub {
+  font-size: 10px;
+  color: rgba(255,255,255,0.6);
+  margin-top: 4px;
+  letter-spacing: 1px;
+}
+
+/* CTA */
+.cta-section {
+  padding: 80px 60px;
+  background: var(--black);
+  text-align: center;
+}
+.cta-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.cta-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: 40px;
+}
+.cta-title em { font-style: italic; }
+.cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-block;
+  padding: 14px 36px;
+  background: var(--white);
+  color: var(--black);
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+.btn-primary:hover { background: var(--accent); color: var(--white); }
+.btn-outline {
+  display: inline-block;
+  padding: 14px 36px;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: var(--white);
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.btn-outline:hover { border-color: var(--white); }
+
+/* FOOTER */
+footer {
+  background: var(--black);
+  color: rgba(255,255,255,0.4);
+  padding: 40px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+}
+.footer-copy { font-size: 10px; letter-spacing: 1px; }
+
+/* REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media(max-width: 900px) {
+  nav { padding: 20px 24px; }
+  .nav-links { display: none; }
+  .page-hero { padding: 100px 28px 40px; flex-direction: column; gap: 20px; }
+  .page-desc { text-align: left; }
+  .filter-bar { padding: 20px 24px; }
+  .collection { padding: 50px 16px; }
+  .collection-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .collection-desc { text-align: left; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .cta-section { padding: 60px 28px; }
+  .cta-title { font-size: 36px; }
+  footer { flex-direction: column; gap: 16px; text-align: center; padding: 30px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">Hared Industries</a>
+  <div class="nav-links">
+    <a href="index.html#about">About</a>
+    <a href="products.html" style="color:var(--black);">Products</a>
+    <a href="index.html#process">Process</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div>
+    <p class="page-eyebrow">Collections · Custom Apparel</p>
+    <h1 class="page-title">Our<br><em>Products</em></h1>
+  </div>
+  <p class="page-desc">Premium custom apparel for global brands — from sportswear to tactical gear, crafted with precision.</p>
+</div>
+
+<!-- FILTER TABS -->
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterSection('all', this)">All</button>
+  <button class="filter-btn" onclick="filterSection('tshirts', this)">T-Shirts</button>
+  <button class="filter-btn" onclick="filterSection('shorts', this)">Shorts</button>
+  <button class="filter-btn" onclick="filterSection('sportswear', this)">Sportswear</button>
+  <button class="filter-btn" onclick="filterSection('tactical', this)">Tactical Gear</button>
+  <button class="filter-btn" onclick="filterSection('fabric', this)">Fabric</button>
+  <button class="filter-btn" onclick="filterSection('packaging', this)">Packaging</button>
+</div>
+
+<!-- T-SHIRTS -->
+<section class="collection reveal" id="tshirts">
+  <div class="collection-header">
+    <div>
+      <p class="page-eyebrow">Collection 01</p>
+      <h2 class="collection-title">Premium<br><em>T-Shirts</em></h2>
+    </div>
+    <p class="collection-desc">Custom-made T-shirts in all sizes, fabrics, and print techniques for global brands.</p>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600" alt="Classic Crew Neck">
+      <div class="product-info">
+        <p class="product-name">Classic Crew Neck</p>
+        <p class="product-sub">100% Cotton</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=600" alt="Oversized T-Shirt">
+      <div class="product-info">
+        <p class="product-name">Premium Oversized</p>
+        <p class="product-sub">Heavy GSM Fabric</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600" alt="Polo T-Shirt">
+      <div class="product-info">
+        <p class="product-name">Polo T-Shirt</p>
+        <p class="product-sub">Pique Fabric</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600" alt="Graphic Print">
+      <div class="product-info">
+        <p class="product-name">Graphic Print</p>
+        <p class="product-sub">DTG & Screen Print</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=600" alt="V-Neck">
+      <div class="product-info">
+        <p class="product-name">V-Neck Essential</p>
+        <p class="product-sub">Soft Combed Cotton</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600" alt="Long Sleeve">
+      <div class="product-info">
+        <p class="product-name">Long Sleeve</p>
+        <p class="product-sub">Custom Embroidery</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHORTS -->
+<section class="collection reveal" id="shorts">
+  <div class="collection-header">
+    <div>
+      <p class="page-eyebrow">Collection 02</p>
+      <h2 class="collection-title">Athletic<br><em>Shorts</em></h2>
+    </div>
+    <p class="collection-desc">Performance and casual shorts designed for comfort and style in every activity.</p>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=600" alt="Running Shorts">
+      <div class="product-info">
+        <p class="product-name">Running Shorts</p>
+        <p class="product-sub">Lightweight Fabric</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1591195853828-11db59a44f43?w=600" alt="Basketball Shorts">
+      <div class="product-info">
+        <p class="product-name">Basketball Shorts</p>
+        <p class="product-sub">Mesh & Polyester</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1571945153237-4929e783af4a?w=600" alt="Cargo Shorts">
+      <div class="product-info">
+        <p class="product-name">Cargo Shorts</p>
+        <p class="product-sub">Heavy Duty Cotton</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPORTSWEAR -->
+<section class="collection reveal" id="sportswear">
+  <div class="collection-header">
+    <div>
+      <p class="page-eyebrow">Collection 03</p>
+      <h2 class="collection-title">Performance<br><em>Sportswear</em></h2>
+    </div>
+    <p class="collection-desc">High-performance sportswear engineered for athletes and active lifestyles worldwide.</p>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1544966503-7cc5ac882d5a?w=600" alt="Sports Jersey">
+      <div class="product-info">
+        <p class="product-name">Sports Jersey</p>
+        <p class="product-sub">Dri-Fit Technology</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1556906781-9a412961a28c?w=600" alt="Track Suit">
+      <div class="product-info">
+        <p class="product-name">Track Suit</p>
+        <p class="product-sub">Full Custom</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1518459031867-a89b944bffe4?w=600" alt="Compression Wear">
+      <div class="product-info">
+        <p class="product-name">Compression Wear</p>
+        <p class="product-sub">Stretch Fabric</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TACTICAL GEAR -->
+<section class="collection reveal" id="tactical">
+  <div class="collection-header">
+    <div>
+      <p class="page-eyebrow">Collection 04</p>
+      <h2 class="collection-title">Tactical<br><em>Gear</em></h2>
+    </div>
+    <p class="collection-desc">Heavy-duty tactical apparel built for demanding environments and professional use.</p>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600" alt="Tactical Vest">
+      <div class="product-info">
+        <p class="product-name">Tactical Vest</p>
+        <p class="product-sub">Ripstop Nylon</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600" alt="Combat Shirt">
+      <div class="product-info">
+        <p class="product-name">Combat Shirt</p>
+        <p class="product-sub">FR Fabric</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1516826957135-700dedea698c?w=600" alt="Tactical Jacket">
+      <div class="product-info">
+        <p class="product-name">Tactical Jacket</p>
+        <p class="product-sub">Waterproof Shell</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FABRIC -->
+<section class="collection reveal" id="fabric">
+  <div class="collection-header">
+    <div>
+      <p class="page-eyebrow">Collection 05</p>
+      <h2 class="collection-title">Premium<br><em>Fabric</em></h2>
+    </div>
+    <p class="collection-desc">Sourced and tested premium fabrics ensuring the highest quality in every garment.</p>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=600" alt="Cotton Fabric">
+      <div class="product-info">
+        <p class="product-name">Premium Cotton</p>
+        <p class="product-sub">180-300 GSM</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600" alt="Polyester">
+      <div class="product-info">
+        <p class="product-name">Performance Poly</p>
+        <p class="product-sub">Moisture Wicking</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600" alt="Blend Fabric">
+      <div class="product-info">
+        <p class="product-name">Cotton-Poly Blend</p>
+        <p class="product-sub">Soft & Durable</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGING -->
+<section class="collection reveal" id="packaging">
+  <div class="collection-header">
+    <div>
+      <p class="page-eyebrow">Collection 06</p>
+      <h2 class="collection-title">Custom<br><em>Packaging</em></h2>
+    </div>
+    <p class="collection-desc">Branded packaging solutions that elevate your product presentation globally.</p>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?w=600" alt="Poly Bags">
+      <div class="product-info">
+        <p class="product-name">Poly Bags</p>
+        <p class="product-sub">Custom Printed</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1520975928316-0563f4c5e2c3?w=600" alt="Hang Tags">
+      <div class="product-info">
+        <p class="product-name">Hang Tags</p>
+        <p class="product-sub">Full Color Print</p>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1612817288484-6f916006741a?w=600" alt="Gift Box">
+      <div class="product-info">
+        <p class="product-name">Gift Boxes</p>
+        <p class="product-sub">Premium Finish</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <p class="cta-label">Ready to Order?</p>
+  <h2 class="cta-title">Let's Build Your<br><em>Custom Collection</em></h2>
+  <div class="cta-buttons">
+    <a class="btn-primary" href="https://wa.me/923107983760">WhatsApp Us</a>
+    <a class="btn-outline" href="mailto:haredindustries@gmail.com">Get Quote</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Hared Industries</div>
+  <div class="footer-copy">© 2026 Hared Industries — All Rights Reserved</div>
+</footer>
+
+<script>
+// Filter functionality
+function filterSection(id, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const sections = document.querySelectorAll('.collection');
+  sections.forEach(s => {
+    if (id === 'all' || s.id === id) {
+      s.style.display = 'block';
+    } else {
+      s.style.display = 'none';
+    }
+  });
+}
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 100);
+    }
+  });
+}, { threshold: 0.05 });
+reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
