@@ -14,554 +14,113 @@
   --border: #d8d8d4;
   --accent: #c9a96e;
 }
-
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
+body { background: var(--white); color: var(--black); font-family: 'Montserrat', sans-serif; font-weight: 300; overflow-x: hidden; }
 
-body {
-  background: var(--white);
-  color: var(--black);
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 300;
-  overflow-x: hidden;
-}
-
-/* ── NAV ── */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 28px 60px;
-  background: rgba(250,250,248,0.95);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-  transition: padding 0.4s;
-}
-
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 28px 60px; background: rgba(250,250,248,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); transition: padding 0.4s; }
 nav.scrolled { padding: 18px 60px; }
-
-.nav-logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
-  font-weight: 300;
-  letter-spacing: 6px;
-  text-transform: uppercase;
-  color: var(--black);
-  text-decoration: none;
-}
-
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; letter-spacing: 6px; text-transform: uppercase; color: var(--black); text-decoration: none; }
 .nav-links { display: flex; gap: 36px; }
-.nav-links a {
-  font-size: 11px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--gray);
-  text-decoration: none;
-  transition: color 0.3s;
-}
+.nav-links a { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gray); text-decoration: none; transition: color 0.3s; }
 .nav-links a:hover { color: var(--black); }
 
-/* ── HERO ── */
-.hero {
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-top: 0;
-}
-
-.hero-left {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 120px 70px 80px;
-  border-right: 1px solid var(--border);
-}
-
-.hero-eyebrow {
-  font-size: 10px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--gray);
-  margin-bottom: 36px;
-}
-
-.hero-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(52px, 6vw, 88px);
-  font-weight: 300;
-  line-height: 1.05;
-  margin-bottom: 32px;
-  letter-spacing: -1px;
-}
-
-.hero-title em {
-  font-style: italic;
-  color: var(--accent);
-}
-
-.hero-sub {
-  font-size: 12px;
-  letter-spacing: 1px;
-  line-height: 2;
-  color: var(--gray);
-  max-width: 340px;
-  margin-bottom: 56px;
-}
-
-.hero-cta {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.btn-primary {
-  display: inline-block;
-  padding: 14px 36px;
-  background: var(--black);
-  color: var(--white);
-  font-size: 10px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: background 0.3s, transform 0.2s;
-}
+/* HERO */
+.hero { height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
+.hero-left { display: flex; flex-direction: column; justify-content: center; padding: 120px 70px 80px; border-right: 1px solid var(--border); }
+.hero-eyebrow { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--gray); margin-bottom: 36px; }
+.hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(52px, 6vw, 88px); font-weight: 300; line-height: 1.05; margin-bottom: 32px; letter-spacing: -1px; }
+.hero-title em { font-style: italic; color: var(--accent); }
+.hero-sub { font-size: 12px; letter-spacing: 1px; line-height: 2; color: var(--gray); max-width: 340px; margin-bottom: 56px; }
+.hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-primary { display: inline-block; padding: 14px 36px; background: var(--black); color: var(--white); font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; transition: background 0.3s, transform 0.2s; }
 .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
-
-.btn-outline {
-  display: inline-block;
-  padding: 14px 36px;
-  border: 1px solid var(--black);
-  color: var(--black);
-  font-size: 10px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: all 0.3s;
-}
+.btn-outline { display: inline-block; padding: 14px 36px; border: 1px solid var(--black); color: var(--black); font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; transition: all 0.3s; }
 .btn-outline:hover { background: var(--black); color: var(--white); }
-
-.hero-right {
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-right img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(20%);
-  transition: transform 8s ease;
-}
-
+.hero-right { position: relative; overflow: hidden; }
+.hero-right img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); transition: transform 8s ease; }
 .hero-right:hover img { transform: scale(1.04); }
+.hero-badge { position: absolute; bottom: 40px; left: 40px; background: var(--white); padding: 20px 28px; border-left: 3px solid var(--accent); }
+.hero-badge span { display: block; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); }
+.hero-badge strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; margin-top: 4px; }
 
-.hero-badge {
-  position: absolute;
-  bottom: 40px;
-  left: 40px;
-  background: var(--white);
-  padding: 20px 28px;
-  border-left: 3px solid var(--accent);
-}
-
-.hero-badge span {
-  display: block;
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--gray);
-}
-
-.hero-badge strong {
-  display: block;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 28px;
-  font-weight: 300;
-  margin-top: 4px;
-}
-
-/* ── MARQUEE ── */
-.marquee-wrap {
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 18px 0;
-  overflow: hidden;
-  background: var(--light);
-}
-
-.marquee-track {
-  display: flex;
-  gap: 60px;
-  white-space: nowrap;
-  animation: marquee 20s linear infinite;
-}
-
-.marquee-track span {
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--gray);
-  flex-shrink: 0;
-}
-
+/* MARQUEE */
+.marquee-wrap { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 18px 0; overflow: hidden; background: var(--light); }
+.marquee-track { display: flex; gap: 60px; white-space: nowrap; animation: marquee 20s linear infinite; }
+.marquee-track span { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); flex-shrink: 0; }
 .marquee-track span.dot { color: var(--accent); }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-/* ── ABOUT ── */
-.about {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 70vh;
-}
-
-.about-img {
-  position: relative;
-  overflow: hidden;
-}
-
-.about-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(30%);
-}
-
-.about-content {
-  padding: 100px 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-left: 1px solid var(--border);
-}
-
-.section-label {
-  font-size: 10px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 24px;
-}
-
-.section-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(36px, 4vw, 56px);
-  font-weight: 300;
-  line-height: 1.15;
-  margin-bottom: 28px;
-}
-
+/* ABOUT */
+.about { display: grid; grid-template-columns: 1fr 1fr; min-height: 70vh; }
+.about-img { position: relative; overflow: hidden; }
+.about-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%); }
+.about-content { padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; border-left: 1px solid var(--border); }
+.section-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4vw, 56px); font-weight: 300; line-height: 1.15; margin-bottom: 28px; }
 .section-title em { font-style: italic; }
+.section-text { font-size: 12px; line-height: 2.2; color: var(--gray); max-width: 440px; margin-bottom: 40px; }
+.stats { display: flex; gap: 48px; margin-top: 8px; }
+.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 300; line-height: 1; color: var(--black); }
+.stat-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); margin-top: 6px; }
 
-.section-text {
-  font-size: 12px;
-  line-height: 2.2;
-  color: var(--gray);
-  max-width: 440px;
-  margin-bottom: 40px;
-}
-
-.stats {
-  display: flex;
-  gap: 48px;
-  margin-top: 8px;
-}
-
-.stat-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 44px;
-  font-weight: 300;
-  line-height: 1;
-  color: var(--black);
-}
-
-.stat-label {
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--gray);
-  margin-top: 6px;
-}
-
-/* ── PRODUCTS ── */
-.products-section {
-  padding: 100px 60px;
-  background: var(--white);
-}
-
-.products-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 60px;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 32px;
-}
-
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-}
-
-.product-card {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 3/4;
-  background: var(--light);
-  cursor: pointer;
-}
-
-.product-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(15%);
-  transition: transform 0.7s ease, filter 0.5s;
-}
-
-.product-card:hover img {
-  transform: scale(1.06);
-  filter: grayscale(0%);
-}
-
-.product-info {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  padding: 28px 24px 24px;
-  background: linear-gradient(transparent, rgba(13,13,13,0.75));
-  transform: translateY(8px);
-  transition: transform 0.4s;
-}
-
+/* PRODUCTS */
+.products-section { padding: 100px 60px; background: var(--white); }
+.products-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px; border-bottom: 1px solid var(--border); padding-bottom: 32px; }
+.products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.product-card { position: relative; overflow: hidden; aspect-ratio: 3/4; background: var(--light); cursor: pointer; display: block; text-decoration: none; }
+.product-card img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(15%); transition: transform 0.7s ease, filter 0.5s; }
+.product-card:hover img { transform: scale(1.06); filter: grayscale(0%); }
+.product-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 24px 24px; background: linear-gradient(transparent, rgba(13,13,13,0.75)); transform: translateY(8px); transition: transform 0.4s; }
 .product-card:hover .product-info { transform: translateY(0); }
+.product-name { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--white); }
+.product-sub { font-size: 10px; color: rgba(255,255,255,0.6); margin-top: 4px; letter-spacing: 1px; }
 
-.product-name {
-  font-size: 11px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--white);
-}
-
-.product-sub {
-  font-size: 10px;
-  color: rgba(255,255,255,0.6);
-  margin-top: 4px;
-  letter-spacing: 1px;
-}
-
-/* ── PROCESS ── */
-.process-section {
-  padding: 100px 60px;
-  background: var(--black);
-  color: var(--white);
-}
-
+/* PROCESS */
+.process-section { padding: 100px 60px; background: var(--black); color: var(--white); }
 .process-section .section-label { color: var(--accent); }
 .process-section .section-title { color: var(--white); }
-
-.process-steps {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 0;
-  margin-top: 60px;
-}
-
-.process-step {
-  padding: 40px 28px;
-  border-right: 1px solid rgba(255,255,255,0.1);
-  position: relative;
-}
-
+.process-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin-top: 60px; }
+.process-step { padding: 40px 28px; border-right: 1px solid rgba(255,255,255,0.1); position: relative; }
 .process-step:last-child { border-right: none; }
+.step-num { font-family: 'Cormorant Garamond', serif; font-size: 56px; font-weight: 300; color: rgba(255,255,255,0.08); line-height: 1; margin-bottom: 20px; }
+.step-title { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--white); margin-bottom: 12px; }
+.step-desc { font-size: 11px; line-height: 1.9; color: rgba(255,255,255,0.45); }
+.step-line { position: absolute; top: 60px; right: -1px; width: 1px; height: 40px; background: var(--accent); }
 
-.step-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 56px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.08);
-  line-height: 1;
-  margin-bottom: 20px;
-}
-
-.step-title {
-  font-size: 11px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--white);
-  margin-bottom: 12px;
-}
-
-.step-desc {
-  font-size: 11px;
-  line-height: 1.9;
-  color: rgba(255,255,255,0.45);
-}
-
-.step-line {
-  position: absolute;
-  top: 60px;
-  right: -1px;
-  width: 1px;
-  height: 40px;
-  background: var(--accent);
-}
-
-/* ── CONTACT ── */
-.contact-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 70vh;
-}
-
-.contact-left {
-  padding: 100px 80px;
-  border-right: 1px solid var(--border);
-}
-
-.contact-links {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  margin-top: 48px;
-}
-
-.contact-link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 22px 0;
-  border-bottom: 1px solid var(--border);
-  text-decoration: none;
-  color: var(--black);
-  transition: padding-left 0.3s;
-  group: true;
-}
-
+/* CONTACT */
+.contact-section { display: grid; grid-template-columns: 1fr 1fr; min-height: 70vh; }
+.contact-left { padding: 100px 80px; border-right: 1px solid var(--border); }
+.contact-links { display: flex; flex-direction: column; gap: 0; margin-top: 48px; }
+.contact-link { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--black); transition: padding-left 0.3s; }
 .contact-link:hover { padding-left: 12px; }
-
-.contact-link-left {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.contact-icon {
-  width: 36px;
-  height: 36px;
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
+.contact-link-left { display: flex; align-items: center; gap: 16px; }
+.contact-icon { width: 36px; height: 36px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .contact-icon svg { width: 16px; height: 16px; }
-
-.contact-link-label {
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--gray);
-}
-
-.contact-link-val {
-  font-size: 13px;
-  color: var(--black);
-  margin-top: 2px;
-}
-
-.contact-arrow {
-  font-size: 18px;
-  color: var(--border);
-  transition: color 0.3s, transform 0.3s;
-}
-
-.contact-link:hover .contact-arrow {
-  color: var(--accent);
-  transform: translateX(4px);
-}
-
-.contact-right {
-  background: var(--light);
-  padding: 100px 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
+.contact-link-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); }
+.contact-link-val { font-size: 13px; color: var(--black); margin-top: 2px; }
+.contact-arrow { font-size: 18px; color: var(--border); transition: color 0.3s, transform 0.3s; }
+.contact-link:hover .contact-arrow { color: var(--accent); transform: translateX(4px); }
+.contact-right { background: var(--light); padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; }
 .contact-right .section-title { font-size: 42px; }
-
 .quote-form { margin-top: 40px; }
-
 .form-row { margin-bottom: 20px; }
-
-.form-row input,
-.form-row textarea {
-  width: 100%;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid var(--border);
-  padding: 14px 0;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 12px;
-  font-weight: 300;
-  color: var(--black);
-  outline: none;
-  transition: border-color 0.3s;
-}
-
-.form-row input::placeholder,
-.form-row textarea::placeholder {
-  color: var(--gray);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  font-size: 10px;
-}
-
-.form-row input:focus,
-.form-row textarea:focus { border-bottom-color: var(--black); }
-
+.form-row input, .form-row textarea { width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--border); padding: 14px 0; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 300; color: var(--black); outline: none; transition: border-color 0.3s; }
+.form-row input::placeholder, .form-row textarea::placeholder { color: var(--gray); letter-spacing: 1px; text-transform: uppercase; font-size: 10px; }
+.form-row input:focus, .form-row textarea:focus { border-bottom-color: var(--black); }
 .form-row textarea { height: 80px; resize: none; }
 
-/* ── FOOTER ── */
-footer {
-  background: var(--black);
-  color: rgba(255,255,255,0.4);
-  padding: 50px 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid rgba(255,255,255,0.08);
-}
-
-.footer-logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
-  font-weight: 300;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.7);
-}
-
+/* FOOTER */
+footer { background: var(--black); color: rgba(255,255,255,0.4); padding: 50px 60px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.08); }
+.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 300; letter-spacing: 5px; text-transform: uppercase; color: rgba(255,255,255,0.7); }
 .footer-copy { font-size: 10px; letter-spacing: 1px; }
 
-/* ── SCROLL ANIMATIONS ── */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ── RESPONSIVE ── */
+/* RESPONSIVE */
 @media(max-width: 900px) {
   nav { padding: 20px 24px; }
   .nav-links { display: none; }
@@ -583,7 +142,6 @@ footer {
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="navbar">
   <a class="nav-logo" href="#">Hared Industries</a>
   <div class="nav-links">
@@ -594,18 +152,11 @@ footer {
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-left">
     <p class="hero-eyebrow">Pakistan · Est. 2020</p>
-    <h1 class="hero-title">
-      Premium<br>
-      <em>Apparel</em><br>
-      Manufacturer
-    </h1>
-    <p class="hero-sub">
-      Custom T-Shirts, Shorts, Sportswear & Tactical Gear crafted for global brands. Quality that speaks for itself.
-    </p>
+    <h1 class="hero-title">Premium<br><em>Apparel</em><br>Manufacturer</h1>
+    <p class="hero-sub">Custom T-Shirts, Shorts, Sportswear & Tactical Gear crafted for global brands. Quality that speaks for itself.</p>
     <div class="hero-cta">
       <a class="btn-primary" href="https://wa.me/923107983760">WhatsApp Us</a>
       <a class="btn-outline" href="mailto:haredindustries@gmail.com">Get Quote</a>
@@ -620,7 +171,6 @@ footer {
   </div>
 </section>
 
-<!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="marquee-track">
     <span>T-Shirts</span><span class="dot">·</span>
@@ -640,7 +190,6 @@ footer {
   </div>
 </div>
 
-<!-- ABOUT -->
 <section class="about" id="about">
   <div class="about-img">
     <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900" alt="About Hared Industries">
@@ -648,27 +197,15 @@ footer {
   <div class="about-content reveal">
     <p class="section-label">Our Story</p>
     <h2 class="section-title">Crafted with<br><em>Precision</em></h2>
-    <p class="section-text">
-      Hared Industries is a Pakistan-based premium apparel manufacturer. We partner with global brands to deliver exceptional custom clothing — from sportswear to tactical gear — with unmatched attention to quality and detail.
-    </p>
+    <p class="section-text">Hared Industries is a Pakistan-based premium apparel manufacturer. We partner with global brands to deliver exceptional custom clothing — from sportswear to tactical gear — with unmatched attention to quality and detail.</p>
     <div class="stats">
-      <div>
-        <div class="stat-num">50+</div>
-        <div class="stat-label">Global Clients</div>
-      </div>
-      <div>
-        <div class="stat-num">6+</div>
-        <div class="stat-label">Product Lines</div>
-      </div>
-      <div>
-        <div class="stat-num">100%</div>
-        <div class="stat-label">QC Passed</div>
-      </div>
+      <div><div class="stat-num">50+</div><div class="stat-label">Global Clients</div></div>
+      <div><div class="stat-num">6+</div><div class="stat-label">Product Lines</div></div>
+      <div><div class="stat-num">100%</div><div class="stat-label">QC Passed</div></div>
     </div>
   </div>
 </section>
 
-<!-- PRODUCTS -->
 <section class="products-section" id="products">
   <div class="products-header">
     <div>
@@ -678,52 +215,51 @@ footer {
     <a class="btn-outline" href="https://wa.me/923107983760">Order Now</a>
   </div>
   <div class="products-grid">
-    <a href="products.html" class="product-card reveal" style="text-decoration:none;display:block;">
+    <a href="products.html" class="product-card reveal">
       <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600" alt="T-Shirts">
       <div class="product-info">
         <p class="product-name">T-Shirts</p>
         <p class="product-sub">Custom & Private Label</p>
       </div>
-    </div>
-    <a href="products.html" class="product-card reveal" style="text-decoration:none;display:block;">
+    </a>
+    <a href="products.html" class="product-card reveal">
       <img src="https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=600" alt="Shorts">
       <div class="product-info">
         <p class="product-name">Shorts</p>
         <p class="product-sub">Athletic & Casual</p>
       </div>
-    </div>
-    <a href="products.html" class="product-card reveal" style="text-decoration:none;display:block;">
+    </a>
+    <a href="products.html" class="product-card reveal">
       <img src="https://images.unsplash.com/photo-1544966503-7cc5ac882d5a?w=600" alt="Sportswear">
       <div class="product-info">
         <p class="product-name">Sportswear</p>
         <p class="product-sub">Performance Fabric</p>
       </div>
-    </div>
-    <a href="products.html" class="product-card reveal" style="text-decoration:none;display:block;">
+    </a>
+    <a href="products.html" class="product-card reveal">
       <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600" alt="Tactical Gear">
       <div class="product-info">
         <p class="product-name">Tactical Gear</p>
         <p class="product-sub">Heavy-Duty Construction</p>
       </div>
-    </div>
-    <a href="products.html" class="product-card reveal" style="text-decoration:none;display:block;">
+    </a>
+    <a href="products.html" class="product-card reveal">
       <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=600" alt="Fabric Quality">
       <div class="product-info">
         <p class="product-name">Premium Fabric</p>
         <p class="product-sub">Sourced & Tested</p>
       </div>
-    </div>
-    <a href="products.html" class="product-card reveal" style="text-decoration:none;display:block;">
+    </a>
+    <a href="products.html" class="product-card reveal">
       <img src="https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?w=600" alt="Packaging">
       <div class="product-info">
         <p class="product-name">Packaging</p>
         <p class="product-sub">Custom Branded</p>
       </div>
-    </div>
+    </a>
   </div>
 </section>
 
-<!-- PROCESS -->
 <section class="process-section" id="process">
   <p class="section-label">How We Work</p>
   <h2 class="section-title" style="color:white;">From Concept to<br><em>Delivery</em></h2>
@@ -760,121 +296,71 @@ footer {
   </div>
 </section>
 
-<!-- CONTACT -->
 <section class="contact-section" id="contact">
   <div class="contact-left reveal">
     <p class="section-label">Get In Touch</p>
     <h2 class="section-title">Let's Work<br><em>Together</em></h2>
     <div class="contact-links">
-
-      <!-- WhatsApp -->
       <a class="contact-link" href="https://wa.me/923107983760" target="_blank">
         <div class="contact-link-left">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
-          </div>
-          <div>
-            <div class="contact-link-label">WhatsApp</div>
-            <div class="contact-link-val">+92 310 7983 760</div>
-          </div>
+          <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></div>
+          <div><div class="contact-link-label">WhatsApp</div><div class="contact-link-val">+92 310 7983 760</div></div>
         </div>
         <span class="contact-arrow">→</span>
       </a>
-
-      <!-- Email -->
       <a class="contact-link" href="mailto:haredindustries@gmail.com" target="_blank">
         <div class="contact-link-left">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </div>
-          <div>
-            <div class="contact-link-label">Email</div>
-            <div class="contact-link-val">haredindustries@gmail.com</div>
-          </div>
+          <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="contact-link-label">Email</div><div class="contact-link-val">haredindustries@gmail.com</div></div>
         </div>
         <span class="contact-arrow">→</span>
       </a>
-
-      <!-- LinkedIn -->
       <a class="contact-link" href="https://www.linkedin.com/in/hared-industries-2775a0253/" target="_blank">
         <div class="contact-link-left">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </div>
-          <div>
-            <div class="contact-link-label">LinkedIn</div>
-            <div class="contact-link-val">Hared Industries</div>
-          </div>
+          <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+          <div><div class="contact-link-label">LinkedIn</div><div class="contact-link-val">Hared Industries</div></div>
         </div>
         <span class="contact-arrow">→</span>
       </a>
-
-      <!-- Instagram -->
       <a class="contact-link" href="https://www.instagram.com/hared_industries" target="_blank">
         <div class="contact-link-left">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          </div>
-          <div>
-            <div class="contact-link-label">Instagram</div>
-            <div class="contact-link-val">@hared_industries</div>
-          </div>
+          <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+          <div><div class="contact-link-label">Instagram</div><div class="contact-link-val">@hared_industries</div></div>
         </div>
         <span class="contact-arrow">→</span>
       </a>
-
-      <!-- Facebook -->
       <a class="contact-link" href="https://www.facebook.com/share/1EebXGu3qj/" target="_blank">
         <div class="contact-link-left">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-          </div>
-          <div>
-            <div class="contact-link-label">Facebook</div>
-            <div class="contact-link-val">Hared Industries</div>
-          </div>
+          <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></div>
+          <div><div class="contact-link-label">Facebook</div><div class="contact-link-val">Hared Industries</div></div>
         </div>
         <span class="contact-arrow">→</span>
       </a>
-
     </div>
   </div>
-
   <div class="contact-right reveal">
     <p class="section-label">Quick Quote</p>
     <h2 class="section-title">Start Your<br><em>Order</em></h2>
     <div class="quote-form">
-      <div class="form-row">
-        <input type="text" placeholder="Your Name">
-      </div>
-      <div class="form-row">
-        <input type="email" placeholder="Email Address">
-      </div>
-      <div class="form-row">
-        <input type="text" placeholder="Product Type">
-      </div>
-      <div class="form-row">
-        <textarea placeholder="Tell us about your order..."></textarea>
-      </div>
+      <div class="form-row"><input type="text" placeholder="Your Name"></div>
+      <div class="form-row"><input type="email" placeholder="Email Address"></div>
+      <div class="form-row"><input type="text" placeholder="Product Type"></div>
+      <div class="form-row"><textarea placeholder="Tell us about your order..."></textarea></div>
       <a class="btn-primary" href="mailto:haredindustries@gmail.com" style="display:inline-block;margin-top:12px;">Send Enquiry</a>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-logo">Hared Industries</div>
   <div class="footer-copy">© 2026 Hared Industries — All Rights Reserved</div>
 </footer>
 
 <script>
-// Nav scroll effect
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 60);
 });
-
-// Scroll reveal
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
